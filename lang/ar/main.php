@@ -2,6 +2,7 @@
 
 return [
     'active' => 'نشط',
+    'activate' => 'تفعيل',
     'action' => 'إجراء',
     'add_new' => 'إضافة جديد',
     'add_plugin' => 'إضافة مكون اضافي',

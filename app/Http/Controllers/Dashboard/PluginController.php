@@ -61,11 +61,13 @@ class PluginController extends Controller
         $plugin = Module::findorFail($plugin);
         $module = $plugin->get('alias');
 
+        Artisan::call('module:migrate ' . $plugin->getName(), ['--force' => true]);
+
         $permissions = ['create', 'read', 'update', 'delete'];
 
         foreach ($permissions as $permission)
             $permission_ids[] = Permission::firstOrCreate([
-                'name' => $module . ' ' . $permission,
+                'name' => $permission . ' ' . $module,
                 'table' => $module
             ])->id;
 
@@ -79,7 +81,6 @@ class PluginController extends Controller
             $user->syncPermissions($permission_ids);
         }
 
-        Artisan::call('module:migrate ' . $plugin->getName(), ['--force' => true]);
         Toast::title('The plugin has been activated')->autoDismiss(3);
         return redirect()->back();
     }

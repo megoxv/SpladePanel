@@ -2,6 +2,7 @@
 
 return [
     'active' => 'Active',
+    'activate' => 'Activate',
     'action' => 'Action',
     'add_new' => 'Add New',
     'add_plugin' => 'Add Plugin',
@@ -50,7 +51,7 @@ return [
     'home' => 'Home',
     'icon' => 'Icon',
     'id' => 'ID',
-    'if_you_have_a_plugin_in_a_.zip_format,_you_may_install_or_update_it_by_uploading_it_here' => 'If_you_have_a_plugin_in_a_.zip_format,_you_may_install_or_update_it_by_uploading_it_here.',
+    'if_you_have_a_plugin_in_a_.zip_format,_you_may_install_or_update_it_by_uploading_it_here' => 'If you have a plugin in a .zip format, you may install or update it by uploading it here.',
     'install_now' => 'Install Now',
     'ip' => 'IP',
     'joined' => 'Joined',
