@@ -36,7 +36,9 @@ class AppServiceProvider extends ServiceProvider
 
         Config::set('app.name', getSetting('website_name'));
         Config::set('app.url', getSetting('website_url'));
-        Config::set('app.timezone', getSetting('timezone'));
+        if(env('DB_USERNAME')) {
+            Config::set('app.timezone', getSetting('timezone'));
+        }
         Config::set('app.locale', getSetting('website_language'));
     }
 }
