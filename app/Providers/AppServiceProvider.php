@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $smtp = [
+        $smtpConfig = [
             'driver'    => 'smtp',
             'host'    => getSetting('smtp_host'),
             'port'    => getSetting('smtp_port'),
@@ -32,13 +32,18 @@ class AppServiceProvider extends ServiceProvider
                 'name' => getSetting('smtp_sender_name')
             ]
         ];
-        Config::set('mail', $smtp);
+        Config::set('mail', $smtpConfig);
 
         Config::set('app.name', getSetting('website_name'));
         Config::set('app.url', getSetting('website_url'));
-        if(env('DB_USERNAME')) {
-            Config::set('app.timezone', getSetting('timezone'));
-        }
         Config::set('app.locale', getSetting('website_language'));
+
+        $timezone = getSetting('timezone');
+    
+        if (in_array($timezone, timezone_identifiers_list())) {
+            Config::set('app.timezone', $timezone);
+        } else {
+            Config::set('app.timezone', 'UTC');
+        }
     }
 }
