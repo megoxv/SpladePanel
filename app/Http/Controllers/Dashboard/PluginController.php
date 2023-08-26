@@ -57,18 +57,18 @@ class PluginController extends Controller
 
     public function activate($plugin)
     {
-        Module::findorFail($plugin)->enable();
-        $plugin = Module::findorFail($plugin);
+        Module::findOrFail($plugin)->enable();
+        $plugin = Module::findOrFail($plugin);
         $module = $plugin->get('alias');
 
-        Artisan::call('module:migrate ' . $plugin->getName(), ['--force' => true]);
+        Artisan::call('module:migrate ' . $plugin->getName());
 
         $permissions = ['create', 'read', 'update', 'delete'];
 
         foreach ($permissions as $permission)
             $permission_ids[] = Permission::firstOrCreate([
                 'name' => $permission . ' ' . $module,
-                'table' => $module
+                'guard_name' => 'web'
             ])->id;
 
         $users = User::whereHas('roles', function ($q) {
@@ -87,8 +87,8 @@ class PluginController extends Controller
 
     public function deactivate($plugin)
     {
-        Module::findorFail($plugin)->disable();
-        $plugin = Module::findorFail($plugin);
+        Module::findOrFail($plugin)->disable();
+        $plugin = Module::findOrFail($plugin);
         $module = $plugin->get('alias');
 
         $permissions = ['create', 'read', 'update', 'delete'];
@@ -97,14 +97,14 @@ class PluginController extends Controller
             Permission::where('name', $module . ' ' . $permission)->delete();
         }
 
-        Artisan::call('module:migrate-reset ' . $plugin->getName(), ['--force' => true]);
+        Artisan::call('module:migrate-reset ' . $plugin->getName());
         Toast::title('The plugin has been deactivated')->autoDismiss(3);
         return redirect()->back();
     }
 
     public function delete($plugin)
     {
-        Module::findorFail($plugin)->delete();
+        Module::findOrFail($plugin)->delete();
 
         Toast::title('The plugin has been deleted')->autoDismiss(3);
         return redirect()->back();

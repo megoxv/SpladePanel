@@ -68,7 +68,7 @@ class Languages extends AbstractTable
             ->column('dir', __('main.direction'))
             ->column('icon', __('main.icon'))
             ->column('status', __('main.status'))
-            ->column('action', __('main.status'))
+            ->column('action', __('main.action'))
             ->paginate();
     }
 }

@@ -28,7 +28,7 @@
                                 $languages = \App\Models\Language::where('status', 1)->orderBy('name', 'asc')->get();
                             @endphp
                             <x-slot:trigger>
-                                <button type="button" class=" py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md bg-white text-slate-700 align-middle hover:bg-slate-50 focus:outline-none transition-all text-sm dark:bg-slate-800 dark:hover:bg-slate-700  dark:text-slate-400 dark:hover:text-white dark:focus:ring-offset-slate-800">
+                                <button type="button" class=" py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none transition-all text-sm dark:bg-gray-800 dark:hover:bg-gray-700  dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                                     @foreach ( $languages as $language )
                                         @if (App::getLocale() == $language->code)
                                             <img src="{{ asset('assets/flags/' . $language->icon . '.svg') }}" alt="{{ $language->code }}" loading="lazy" class="w-5 h-5 rounded" />

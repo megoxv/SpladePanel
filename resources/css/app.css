@@ -3,3 +3,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .choices__item {
+        color: white;
+    }
+
+    .dark .choices .choices__inner {
+        background-color: #1F2937;
+        color: white;
+        border-color: rgb(75 85 99 / var(--tw-border-opacity));
+    }
+
+    .dark .choices__input {
+        background-color: transparent;
+    }
+
+    .dark .choices[data-type*=select-one] .choices__input {
+        background-color: #111827 !important;
+        color: white;
+    }
+
+    .dark .choices__list--dropdown,
+    .dark .choices__list[aria-expanded] {
+        background-color: #111827 !important;
+    }
+
+    .dark .choices .choices__list--dropdown .choices__item--selectable {
+        color: white !important;
+    }
+
+    :dir(rtl) .choices[data-type*=select-one] .choices__button {
+        left: 0;
+    }
+}

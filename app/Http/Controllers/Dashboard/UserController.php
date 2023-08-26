@@ -51,6 +51,7 @@ class UserController extends Controller
         $request->validate([
             'photo' => "nullable|mimes:jpg,jpeg,png|max:1024",
             'name' => "required|string|max:255",
+            'username' => "required|unique:users,username",
             'email' => "required|unique:users,email",
             'bio' => "nullable|max:255",
             'status' => "required",
@@ -59,6 +60,7 @@ class UserController extends Controller
 
         $user = User::create([
             "name" => $request->name,
+            "username" => $request->username,
             "email" => $request->email,
             "bio" => $request->bio,
             "status" => $request->status,
@@ -105,6 +107,7 @@ class UserController extends Controller
         $request->validate([
             'photo' => "nullable|mimes:jpg,jpeg,png|max:1024",
             'name' => "required|string|max:255",
+            'username' => "required|unique:users,username," . $user->id,
             'email' => "required|unique:users,email," . $user->id,
             'bio' => "nullable|max:255",
             'status' => "required",
@@ -115,19 +118,13 @@ class UserController extends Controller
             $user->updateProfilePhoto($request->photo);
         }
 
-        if (
-            $request->email !== $user->email &&
-            $user instanceof MustVerifyEmail
-        ) {
-            $this->updateVerifiedUser($user, $request);
-        } else {
-            $user->forceFill([
-                'name' => $request->name,
-                'email' => $request->email,
-                'bio' => $request->bio,
-                'status' => $request->status,
-            ])->save();
-        }
+        $user->forceFill([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'bio' => $request->bio,
+            'status' => $request->status,
+        ])->save();
 
         if ($request->new_password != null) {
             $user->update([
@@ -136,8 +133,8 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'roles'=>"required|array",
-            'roles.*'=>"required|exists:roles,id",
+            'roles' => "required|array",
+            'roles.*' => "required|exists:roles,id",
         ]);
 
         $user->syncRoles($request->roles);

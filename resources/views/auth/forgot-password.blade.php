@@ -1,12 +1,9 @@
-@seoTitle(__('Forgot Password'))
+@seoTitle(__('main.forgot_password'))
 
 <x-authentication-card>
-    <x-slot:logo>
-        <x-authentication-card-logo />
-    </x-slot>
-
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <h1 class="text-center text-2xl font-bold tracking-tight text-gray-950 dark:text-white mb-6">@lang('main.forgot_password')</h1>
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-300">
+        {{ __('main.forgot_password_message') }}
     </div>
 
     @if($status = session('status'))
@@ -16,10 +13,7 @@
     @endif
 
     <x-splade-form class="space-y-4" :action="route('password.email')">
-        <x-splade-input id="email" name="email" type="email" :label="__('Email')" required autofocus />
-
-        <div class="flex items-center justify-end mt-4">
-            <x-splade-submit :label="__('Email Password Reset Link')" />
-        </div>
+        <x-splade-input id="email" name="email" type="email" :label="__('main.email')" required autofocus />
+        <x-splade-submit :label="__('main.email_password_reset_link')" class="w-full" />
     </x-splade-form>
 </x-authentication-card>

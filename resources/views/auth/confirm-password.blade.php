@@ -1,19 +1,13 @@
-@seoTitle(__('Secure Area'))
+@seoTitle(__('main.secure_area'))
 
 <x-authentication-card>
-    <x-slot:logo>
-        <x-authentication-card-logo />
-    </x-slot>
-
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-300">
+        {{ __('main.confirm_password_message') }}
     </div>
 
     <x-splade-form class="space-y-4" :action="route('password.confirm')">
-        <x-splade-input id="password" name="password" type="password" :label="__('Password')" required autocomplete="current-password" autofocus />
+        <x-splade-input id="password" name="password" type="password" :label="__('main.password')" required autocomplete="current-password" autofocus />
 
-        <div class="flex items-center justify-end mt-4">
-            <x-splade-submit :label="__('Confirm')" />
-        </div>
+        <x-splade-submit :label="__('main.confirm')" class="w-full" />
     </x-splade-form>
 </x-authentication-card>
