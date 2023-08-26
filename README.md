@@ -13,6 +13,8 @@ Welcome to SpladePanel, where you can dive into a world of elegance and simplici
 -   Multilingual system
 -   Advanced Permission System for fine-grained control
 -   Ready-to-use Plugins System for easy expansion
+-   Dark Mode
+-   RTL Support
 
 ## Setup Instructions
 
