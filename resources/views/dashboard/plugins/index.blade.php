@@ -34,7 +34,7 @@
     </div>
     {{-- Content --}}
     <x-section-content>
-        <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             @php
                 $plugins = Module::all();
             @endphp

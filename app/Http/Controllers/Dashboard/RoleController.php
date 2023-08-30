@@ -51,7 +51,7 @@ class RoleController extends Controller
         $role = Role::create($validatedData);
         $role->syncPermissions($request->permissions);
 
-        Toast::title('Role created')->autoDismiss(3);
+        Toast::title(__('main.role_created'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -87,7 +87,7 @@ class RoleController extends Controller
         $role->update($validatedData);
         $role->syncPermissions($request->permissions);
 
-        Toast::title('Role updated')->autoDismiss(3);
+        Toast::title(__('main.role_updated'))->autoDismiss(3);
         return redirect()->route('dashboard.roles.index');
     }
 
@@ -98,7 +98,7 @@ class RoleController extends Controller
     {
         $role->delete();
 
-        Toast::title('Role deleted')->autoDismiss(3);
+        Toast::title(__('main.role_deleted'))->autoDismiss(3);
         return redirect()->back();
     }
 }

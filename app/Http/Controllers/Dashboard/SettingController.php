@@ -71,8 +71,7 @@ class SettingController extends Controller
             $favicon->update(['value' => $image_path]);
         }
 
-
-        Toast::title('Settings updated')->autoDismiss(3);
+        Toast::title(__('main.settings_updated'))->autoDismiss(3);
         return redirect()->back();
     }
 }

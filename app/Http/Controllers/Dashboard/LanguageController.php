@@ -48,7 +48,7 @@ class LanguageController extends Controller
             'icon' => 'required',
             'status' => 'required',
         ]);
-        // dd($request->all());
+
         $code = trim(strtolower(substr($request->code, 0, 2)));
 
         $success = false;
@@ -70,7 +70,7 @@ class LanguageController extends Controller
                 $language->status = $request->status;
                 $language->save();
 
-                Toast::title('Language created')->autoDismiss(3);
+                Toast::title(__('main.language_created'))->autoDismiss(3);
                 return redirect()->back();
             } else {
                 return redirect()->back();
@@ -117,7 +117,7 @@ class LanguageController extends Controller
             'status' => $request->status,
         ]);
 
-        Toast::title('Language updated')->autoDismiss(3);
+        Toast::title(__('main.language_updated'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -136,12 +136,12 @@ class LanguageController extends Controller
 
             if ($success) {
                 $language->delete();
-                Toast::title('Language deleted')->autoDismiss(3);
+                Toast::title(__('main.language_deleted'))->autoDismiss(3);
                 return redirect()->back();
             }
         }
 
-        Toast::warning('You cannot delete this default language')->autoDismiss(3);
+        Toast::warning(__('main.you_cannot_delete_this_default_language'))->autoDismiss(3);
         return redirect()->back();
     }
 }

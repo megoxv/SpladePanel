@@ -47,10 +47,10 @@ class PluginController extends Controller
         if ($res === TRUE) {
             $zip->extractTo(Module::getPath());
             $zip->close();
-            Toast::title('The plugin has been successfully uploaded')->autoDismiss(3);
-            return redirect()->route('dashboard.index');
+            Toast::title(__('main.the_plugin_has_been_successfully_uploaded'))->autoDismiss(3);
+            return redirect()->route('dashboard.plugins.index');
         } else {
-            Toast::warning('Sorry, please upload the plugin again')->autoDismiss(3);
+            Toast::warning(__('main.sorry,_please_upload_the_plugin_again'))->autoDismiss(3);
             return redirect()->back();
         }
     }
@@ -81,7 +81,7 @@ class PluginController extends Controller
             $user->syncPermissions($permission_ids);
         }
 
-        Toast::title('The plugin has been activated')->autoDismiss(3);
+        Toast::title(__('main.the_plugin_has_been_activated'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -98,7 +98,7 @@ class PluginController extends Controller
         }
 
         Artisan::call('module:migrate-reset ' . $plugin->getName());
-        Toast::title('The plugin has been deactivated')->autoDismiss(3);
+        Toast::title(__('main.the_plugin_has_been_deactivated'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -106,7 +106,7 @@ class PluginController extends Controller
     {
         Module::findOrFail($plugin)->delete();
 
-        Toast::title('The plugin has been deleted')->autoDismiss(3);
+        Toast::title(__('main.the_plugin_has_been_deleted'))->autoDismiss(3);
         return redirect()->back();
     }
 }

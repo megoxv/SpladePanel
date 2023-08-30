@@ -51,7 +51,7 @@ class PermissionController extends Controller
         $permission = Permission::create($validatedData);
         $permission->syncRoles($request->roles);
 
-        Toast::title('Permission created')->autoDismiss(3);
+        Toast::title(__('main.permission_created'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -87,7 +87,7 @@ class PermissionController extends Controller
         $permission->update($validatedData);
         $permission->syncRoles($request->roles);
 
-        Toast::title('Permission updated')->autoDismiss(3);
+        Toast::title(__('main.permission_updated'))->autoDismiss(3);
         return redirect()->route('dashboard.permissions.index');
     }
 
@@ -98,7 +98,7 @@ class PermissionController extends Controller
     {
         $permission->delete();
 
-        Toast::title('Permission deleted')->autoDismiss(3);
+        Toast::title(__('main.permission_deleted'))->autoDismiss(3);
         return redirect()->back();
     }
 }

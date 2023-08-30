@@ -75,7 +75,7 @@ class UserController extends Controller
             $user->updateProfilePhoto($request->photo);
         }
 
-        Toast::title('User created')->autoDismiss(3);
+        Toast::title(__('main.user_created'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -140,7 +140,7 @@ class UserController extends Controller
         $user->syncRoles($request->roles);
         $user->givePermissionTo($request->permissions);
 
-        Toast::title('User updated')->autoDismiss(3);
+        Toast::title(__('main.user_updated'))->autoDismiss(3);
         return redirect()->back();
     }
 
@@ -155,7 +155,7 @@ class UserController extends Controller
             $user->delete();
         });
 
-        Toast::title('User deleted')->autoDismiss(3);
+        Toast::title(__('main.user_deleted'))->autoDismiss(3);
         return redirect()->back();
     }
 }
