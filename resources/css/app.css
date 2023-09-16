@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 @layer components {
-    .choices__item {
+    .dark .choices__item {
         color: white;
     }
 

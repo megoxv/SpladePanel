@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Language;
 use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getSetting')) {
@@ -32,4 +33,9 @@ function dark_logo()
 function favicon()
 {
     return Storage::url(getSetting('favicon'));
+}
+
+function locales()
+{
+    return Language::where('status', 1)->orderBy('name', 'asc')->get();
 }

@@ -18,6 +18,7 @@
         "protonemedia/laravel-splade-jetstream": "^1.1",
         "spatie/laravel-permission": "^5.10",
         "spatie/laravel-query-builder": "^5.2",
+        "spatie/laravel-translatable": "^6.5",
         "stevebauman/location": "*"
     },
     "require-dev": {
