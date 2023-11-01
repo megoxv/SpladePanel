@@ -20,34 +20,40 @@ Welcome to SpladePanel, where you can dive into a world of elegance and simplici
 
 To get started with SpladePanel, follow these steps:
 
-1.  Install the required dependencies using Composer:
-
+1.  Install the required dependencies:
     ```php
     composer install
+    npm install
     ```
-2. Copy the `.env.example` file to `.env`:
 
+2. Compile front-end assets.
+    ```php
+    npm run build
+    ```
+
+3. Copy the `.env.example` file to `.env`:
     ```php
     cp .env.example .env
     ```
 
-3. Generate a security key and link the storage file:
-
+4. Generate a security key and link the storage file:
     ```php
     php artisan key:generate
     php artisan storage:link
     ```
-5.  Configure your database connection by updating the `.env` file.
-6.  Run database migrations and seed initial data:
 
+5.  Configure your database connection by updating the `.env` file.
+
+6.  Run database migrations and seed initial data:
     ```php
-    php artisan migrate:fresh
-	php artisan db:seed
+    php artisan migrate:fresh --seed
      ```
-8. Start server:
+
+7. Start server:
     ```php
     php artisan serve
      ```
+
 ## Credentials
 
 Access the login page: [http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)
