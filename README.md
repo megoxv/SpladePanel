@@ -41,7 +41,7 @@ To get started with SpladePanel, follow these steps:
 6.  Run database migrations and seed initial data:
 
     ```php
-    php artisan migrate:fresh
+    php artisan migrate
 	php artisan db:seed
      ```
 8. Start server:
